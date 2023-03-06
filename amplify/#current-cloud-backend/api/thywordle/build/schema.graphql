@@ -1,0 +1,336 @@
+
+type GameStats @aws_iam @aws_api_key {
+  id: ID!
+  winDistribution: Int
+  gamesFailed: Int
+  currentStreak: Int
+  bestStreak: Int
+  totalGames: Int
+  successRate: Int
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Profile @aws_iam @aws_api_key {
+  id: ID!
+  username: String
+  userEmail: String
+  photoUrl: String
+  gameStats: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelGameStatsConnection @aws_api_key @aws_iam {
+  items: [GameStats]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelGameStatsFilterInput {
+  id: ModelIDInput
+  winDistribution: ModelIntInput
+  gamesFailed: ModelIntInput
+  currentStreak: ModelIntInput
+  bestStreak: ModelIntInput
+  totalGames: ModelIntInput
+  successRate: ModelIntInput
+  and: [ModelGameStatsFilterInput]
+  or: [ModelGameStatsFilterInput]
+  not: ModelGameStatsFilterInput
+}
+
+type Query {
+  getGameStats(id: ID!): GameStats @aws_api_key @aws_iam
+  listGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String): ModelGameStatsConnection @aws_api_key @aws_iam
+  syncGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelGameStatsConnection @aws_api_key @aws_iam
+  getProfile(id: ID!): Profile @aws_api_key @aws_iam
+  listProfiles(filter: ModelProfileFilterInput, limit: Int, nextToken: String): ModelProfileConnection @aws_api_key @aws_iam
+  syncProfiles(filter: ModelProfileFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelProfileConnection @aws_api_key @aws_iam
+}
+
+input ModelGameStatsConditionInput {
+  winDistribution: ModelIntInput
+  gamesFailed: ModelIntInput
+  currentStreak: ModelIntInput
+  bestStreak: ModelIntInput
+  totalGames: ModelIntInput
+  successRate: ModelIntInput
+  and: [ModelGameStatsConditionInput]
+  or: [ModelGameStatsConditionInput]
+  not: ModelGameStatsConditionInput
+}
+
+input CreateGameStatsInput {
+  id: ID
+  winDistribution: Int
+  gamesFailed: Int
+  currentStreak: Int
+  bestStreak: Int
+  totalGames: Int
+  successRate: Int
+  _version: Int
+}
+
+input UpdateGameStatsInput {
+  id: ID!
+  winDistribution: Int
+  gamesFailed: Int
+  currentStreak: Int
+  bestStreak: Int
+  totalGames: Int
+  successRate: Int
+  _version: Int
+}
+
+input DeleteGameStatsInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createGameStats(input: CreateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam
+  updateGameStats(input: UpdateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam
+  deleteGameStats(input: DeleteGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam
+  createProfile(input: CreateProfileInput!, condition: ModelProfileConditionInput): Profile @aws_api_key @aws_iam
+  updateProfile(input: UpdateProfileInput!, condition: ModelProfileConditionInput): Profile @aws_api_key @aws_iam
+  deleteProfile(input: DeleteProfileInput!, condition: ModelProfileConditionInput): Profile @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionGameStatsFilterInput {
+  id: ModelSubscriptionIDInput
+  winDistribution: ModelSubscriptionIntInput
+  gamesFailed: ModelSubscriptionIntInput
+  currentStreak: ModelSubscriptionIntInput
+  bestStreak: ModelSubscriptionIntInput
+  totalGames: ModelSubscriptionIntInput
+  successRate: ModelSubscriptionIntInput
+  and: [ModelSubscriptionGameStatsFilterInput]
+  or: [ModelSubscriptionGameStatsFilterInput]
+}
+
+type Subscription {
+  onCreateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["createGameStats"]) @aws_api_key @aws_iam
+  onUpdateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["updateGameStats"]) @aws_api_key @aws_iam
+  onDeleteGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["deleteGameStats"]) @aws_api_key @aws_iam
+  onCreateProfile(filter: ModelSubscriptionProfileFilterInput): Profile @aws_subscribe(mutations: ["createProfile"]) @aws_api_key @aws_iam
+  onUpdateProfile(filter: ModelSubscriptionProfileFilterInput): Profile @aws_subscribe(mutations: ["updateProfile"]) @aws_api_key @aws_iam
+  onDeleteProfile(filter: ModelSubscriptionProfileFilterInput): Profile @aws_subscribe(mutations: ["deleteProfile"]) @aws_api_key @aws_iam
+}
+
+type ModelProfileConnection @aws_api_key @aws_iam {
+  items: [Profile]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelProfileFilterInput {
+  id: ModelIDInput
+  username: ModelStringInput
+  userEmail: ModelStringInput
+  photoUrl: ModelStringInput
+  gameStats: ModelStringInput
+  and: [ModelProfileFilterInput]
+  or: [ModelProfileFilterInput]
+  not: ModelProfileFilterInput
+}
+
+input ModelProfileConditionInput {
+  username: ModelStringInput
+  userEmail: ModelStringInput
+  photoUrl: ModelStringInput
+  gameStats: ModelStringInput
+  and: [ModelProfileConditionInput]
+  or: [ModelProfileConditionInput]
+  not: ModelProfileConditionInput
+}
+
+input CreateProfileInput {
+  id: ID
+  username: String
+  userEmail: String
+  photoUrl: String
+  gameStats: String
+  _version: Int
+}
+
+input UpdateProfileInput {
+  id: ID!
+  username: String
+  userEmail: String
+  photoUrl: String
+  gameStats: String
+  _version: Int
+}
+
+input DeleteProfileInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionProfileFilterInput {
+  id: ModelSubscriptionIDInput
+  username: ModelSubscriptionStringInput
+  userEmail: ModelSubscriptionStringInput
+  photoUrl: ModelSubscriptionStringInput
+  gameStats: ModelSubscriptionStringInput
+  and: [ModelSubscriptionProfileFilterInput]
+  or: [ModelSubscriptionProfileFilterInput]
+}
+
