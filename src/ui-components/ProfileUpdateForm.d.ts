@@ -16,22 +16,16 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type ProfileUpdateFormInputValues = {
     username?: string;
     userEmail?: string;
-    photoUrl?: string;
-    gameStats?: string;
 };
 export declare type ProfileUpdateFormValidationValues = {
     username?: ValidationFunction<string>;
     userEmail?: ValidationFunction<string>;
-    photoUrl?: ValidationFunction<string>;
-    gameStats?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ProfileUpdateFormOverridesProps = {
     ProfileUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     username?: PrimitiveOverrideProps<TextFieldProps>;
     userEmail?: PrimitiveOverrideProps<TextFieldProps>;
-    photoUrl?: PrimitiveOverrideProps<TextFieldProps>;
-    gameStats?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ProfileUpdateFormProps = React.PropsWithChildren<{
     overrides?: ProfileUpdateFormOverridesProps | undefined | null;

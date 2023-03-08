@@ -9,14 +9,14 @@ const awsmobile = {
   aws_appsync_authenticationType: 'API_KEY',
   aws_appsync_apiKey: 'da2-sryx6a4unvd57it76xt454pjbu',
   aws_cognito_identity_pool_id:
-    'us-east-2:53fb0c04-c3de-4d03-867b-ce649b9c3a97',
+    'us-east-2:92d0ed31-180b-4ba8-b830-507ba486aba4',
   aws_cognito_region: 'us-east-2',
-  aws_user_pools_id: 'us-east-2_3V9BXpjpv',
-  aws_user_pools_web_client_id: '3vgu0o7o2t5joukisfua2thonh',
+  aws_user_pools_id: 'us-east-2_iBQT0OP8W',
+  aws_user_pools_web_client_id: '5ul4i82qrsokucp500f0lrr86',
   oauth: {},
   aws_cognito_username_attributes: ['EMAIL'],
   aws_cognito_social_providers: [],
-  aws_cognito_signup_attributes: ['EMAIL', 'PREFERRED_USERNAME', 'PICTURE'],
+  aws_cognito_signup_attributes: ['EMAIL', 'PREFERRED_USERNAME'],
   aws_cognito_mfa_configuration: 'OFF',
   aws_cognito_mfa_types: ['SMS'],
   aws_cognito_password_protection_settings: {

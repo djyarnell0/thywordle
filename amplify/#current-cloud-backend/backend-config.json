@@ -42,8 +42,7 @@
         },
         "signupAttributes": [
           "EMAIL",
-          "PREFERRED_USERNAME",
-          "PICTURE"
+          "PREFERRED_USERNAME"
         ],
         "socialProviders": [],
         "usernameAttributes": [

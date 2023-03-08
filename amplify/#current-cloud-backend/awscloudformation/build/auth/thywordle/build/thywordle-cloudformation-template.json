@@ -1,5 +1,5 @@
 {
-  "Description": "Amplify Cognito Stack for AWS Amplify CLI",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"AmplifyAdmin\",\"createdWith\":\"11.0.0-rc.e5f00c392.0\",\"stackType\":\"auth-Cognito\",\"metadata\":{}}",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "env": {
@@ -121,9 +121,6 @@
     },
     "dependsOn": {
       "Type": "CommaDelimitedList"
-    },
-    "hostedUI": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -181,11 +178,6 @@
             "Mutable": true,
             "Name": "preferred_username",
             "Required": true
-          },
-          {
-            "Mutable": true,
-            "Name": "picture",
-            "Required": true
           }
         ],
         "UserAttributeUpdateSettings": {
@@ -229,7 +221,7 @@
         "UserPoolId": {
           "Ref": "UserPool"
         },
-        "ClientName": "thyword5e7f6a8_app_clientWeb",
+        "ClientName": "thywor0718e43d_app_clientWeb",
         "RefreshTokenValidity": {
           "Ref": "userpoolClientRefreshTokenValidity"
         },
@@ -247,7 +239,7 @@
         "UserPoolId": {
           "Ref": "UserPool"
         },
-        "ClientName": "thyword5e7f6a8_app_client",
+        "ClientName": "thywor0718e43d_app_client",
         "GenerateSecret": {
           "Ref": "userpoolClientGenerateSecret"
         },
@@ -287,7 +279,7 @@
               "Fn::Join": [
                 "",
                 [
-                  "upClientLambdaRoled5e7f6a8",
+                  "upClientLambdaRole0718e43d",
                   {
                     "Fn::Select": [
                       3,
@@ -328,7 +320,7 @@
           ]
         },
         "Handler": "index.handler",
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs16.x",
         "Timeout": 300
       },
       "DependsOn": [
@@ -355,7 +347,7 @@
             }
           ]
         },
-        "PolicyName": "thyword5e7f6a8_userpoolclient_lambda_iam_policy",
+        "PolicyName": "thywor0718e43d_userpoolclient_lambda_iam_policy",
         "Roles": [
           {
             "Ref": "UserPoolClientRole"
@@ -398,7 +390,7 @@
             }
           ]
         },
-        "PolicyName": "thyword5e7f6a8_userpoolclient_lambda_log_policy",
+        "PolicyName": "thywor0718e43d_userpoolclient_lambda_log_policy",
         "Roles": [
           {
             "Ref": "UserPoolClientRole"

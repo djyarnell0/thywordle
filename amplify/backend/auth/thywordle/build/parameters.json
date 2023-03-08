@@ -1,7 +1,7 @@
 {
   "identityPoolName": "testAuthIdentityPool",
   "allowUnauthenticatedIdentities": false,
-  "resourceNameTruncated": "thyword5e7f6a8",
+  "resourceNameTruncated": "thywor0718e43d",
   "userPoolName": "thywordle",
   "autoVerifiedAttributes": [
     "email"
@@ -24,17 +24,16 @@
   ],
   "requiredAttributes": [
     "email",
-    "preferred_username",
-    "picture"
+    "preferred_username"
   ],
   "aliasAttributes": [],
   "userpoolClientGenerateSecret": false,
   "userpoolClientRefreshTokenValidity": 30,
   "userpoolClientWriteAttributes": [],
   "userpoolClientReadAttributes": [],
-  "userpoolClientLambdaRole": "thyword5e7f6a8_userpoolclient_lambda_role",
+  "userpoolClientLambdaRole": "thywor0718e43d_userpoolclient_lambda_role",
   "userpoolClientSetAttributes": false,
-  "sharedId": "d5e7f6a8",
+  "sharedId": "0718e43d",
   "resourceName": "thywordle",
   "authSelections": "identityPoolAndUserPool",
   "serviceName": "Cognito",
@@ -62,6 +61,5 @@
     ]
   },
   "breakCircularDependency": true,
-  "dependsOn": [],
-  "hostedUI": false
+  "dependsOn": []
 }

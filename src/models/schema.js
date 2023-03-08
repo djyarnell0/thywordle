@@ -118,20 +118,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "photoUrl": {
-                    "name": "photoUrl",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "gameStats": {
-                    "name": "gameStats",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -178,5 +164,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.6",
-    "version": "22eb37559c38b2f9b521dae7b1f98bee"
+    "version": "cb37ece3166160e2e5004f56d431767d"
 };

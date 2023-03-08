@@ -26,13 +26,9 @@ export default function ProfileUpdateForm(props) {
   const initialValues = {
     username: "",
     userEmail: "",
-    photoUrl: "",
-    gameStats: "",
   };
   const [username, setUsername] = React.useState(initialValues.username);
   const [userEmail, setUserEmail] = React.useState(initialValues.userEmail);
-  const [photoUrl, setPhotoUrl] = React.useState(initialValues.photoUrl);
-  const [gameStats, setGameStats] = React.useState(initialValues.gameStats);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = profileRecord
@@ -40,8 +36,6 @@ export default function ProfileUpdateForm(props) {
       : initialValues;
     setUsername(cleanValues.username);
     setUserEmail(cleanValues.userEmail);
-    setPhotoUrl(cleanValues.photoUrl);
-    setGameStats(cleanValues.gameStats);
     setErrors({});
   };
   const [profileRecord, setProfileRecord] = React.useState(profile);
@@ -56,8 +50,6 @@ export default function ProfileUpdateForm(props) {
   const validations = {
     username: [],
     userEmail: [],
-    photoUrl: [],
-    gameStats: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -87,8 +79,6 @@ export default function ProfileUpdateForm(props) {
         let modelFields = {
           username,
           userEmail,
-          photoUrl,
-          gameStats,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -146,8 +136,6 @@ export default function ProfileUpdateForm(props) {
             const modelFields = {
               username: value,
               userEmail,
-              photoUrl,
-              gameStats,
             };
             const result = onChange(modelFields);
             value = result?.username ?? value;
@@ -173,8 +161,6 @@ export default function ProfileUpdateForm(props) {
             const modelFields = {
               username,
               userEmail: value,
-              photoUrl,
-              gameStats,
             };
             const result = onChange(modelFields);
             value = result?.userEmail ?? value;
@@ -188,60 +174,6 @@ export default function ProfileUpdateForm(props) {
         errorMessage={errors.userEmail?.errorMessage}
         hasError={errors.userEmail?.hasError}
         {...getOverrideProps(overrides, "userEmail")}
-      ></TextField>
-      <TextField
-        label="Photo url"
-        isRequired={false}
-        isReadOnly={false}
-        value={photoUrl}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              username,
-              userEmail,
-              photoUrl: value,
-              gameStats,
-            };
-            const result = onChange(modelFields);
-            value = result?.photoUrl ?? value;
-          }
-          if (errors.photoUrl?.hasError) {
-            runValidationTasks("photoUrl", value);
-          }
-          setPhotoUrl(value);
-        }}
-        onBlur={() => runValidationTasks("photoUrl", photoUrl)}
-        errorMessage={errors.photoUrl?.errorMessage}
-        hasError={errors.photoUrl?.hasError}
-        {...getOverrideProps(overrides, "photoUrl")}
-      ></TextField>
-      <TextField
-        label="Game stats"
-        isRequired={false}
-        isReadOnly={false}
-        value={gameStats}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              username,
-              userEmail,
-              photoUrl,
-              gameStats: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.gameStats ?? value;
-          }
-          if (errors.gameStats?.hasError) {
-            runValidationTasks("gameStats", value);
-          }
-          setGameStats(value);
-        }}
-        onBlur={() => runValidationTasks("gameStats", gameStats)}
-        errorMessage={errors.gameStats?.errorMessage}
-        hasError={errors.gameStats?.hasError}
-        {...getOverrideProps(overrides, "gameStats")}
       ></TextField>
       <Flex
         justifyContent="space-between"

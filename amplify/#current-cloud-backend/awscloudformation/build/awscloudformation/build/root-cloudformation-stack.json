@@ -167,7 +167,7 @@
             "Ref": "UnauthRoleName"
           },
           "S3DeploymentBucket": "amplify-amplifya85b461c9d844-staging-191351-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/8830839481f9f4d1095ddddca79109b3f99c4e28",
+          "S3DeploymentRootKey": "amplify-appsync-files/98e8cb01116de40758d7fed996cf7d79ac0c7199",
           "env": "staging"
         }
       }
@@ -179,7 +179,7 @@
         "Parameters": {
           "identityPoolName": "testAuthIdentityPool",
           "allowUnauthenticatedIdentities": false,
-          "resourceNameTruncated": "thyword5e7f6a8",
+          "resourceNameTruncated": "thywor0718e43d",
           "userPoolName": "thywordle",
           "autoVerifiedAttributes": "email",
           "mfaConfiguration": "OFF",
@@ -191,15 +191,15 @@
           "defaultPasswordPolicy": false,
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": "Requires Lowercase,Requires Numbers,Requires Symbols,Requires Uppercase",
-          "requiredAttributes": "email,preferred_username,picture",
+          "requiredAttributes": "email,preferred_username",
           "aliasAttributes": "",
           "userpoolClientGenerateSecret": false,
           "userpoolClientRefreshTokenValidity": 30,
           "userpoolClientWriteAttributes": "",
           "userpoolClientReadAttributes": "",
-          "userpoolClientLambdaRole": "thyword5e7f6a8_userpoolclient_lambda_role",
+          "userpoolClientLambdaRole": "thywor0718e43d_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
-          "sharedId": "d5e7f6a8",
+          "sharedId": "0718e43d",
           "resourceName": "thywordle",
           "authSelections": "identityPoolAndUserPool",
           "serviceName": "Cognito",
@@ -226,7 +226,6 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
-          "hostedUI": false,
           "env": "staging"
         }
       }
@@ -306,7 +305,7 @@
           }
         },
         "Handler": "index.handler",
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs16.x",
         "Timeout": 300,
         "Role": {
           "Fn::GetAtt": [

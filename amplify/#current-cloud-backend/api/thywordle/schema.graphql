@@ -12,6 +12,5 @@ type Profile @model @auth(rules: [{allow: public}]) {
   id: ID!
   username: String
   userEmail: String
-  photoUrl: String
-  gameStats: String
-} 
+}
+ 

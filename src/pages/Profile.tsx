@@ -1,49 +1,39 @@
+import '@aws-amplify/ui-react/styles.css'
+
+import {
+  WithAuthenticatorProps,
+  withAuthenticator,
+} from '@aws-amplify/ui-react'
 import { Auth } from 'aws-amplify'
-import React from 'react'
+import { Amplify } from 'aws-amplify'
 
-const username = 'Dallas'
-const password = 'BadPassword'
-const email = 'daya@freed.com'
+import awsExports from '../aws-exports'
 
-function Profile() {
-  async function signUp() {
-    try {
-      const { user } = await Auth.signUp({
-        username,
-        password,
-        attributes: {
-          email, // optional
-          // phone_number, // optional - E.164 number convention
-          // other custom attributes
-        },
-        autoSignIn: {
-          // optional - enables auto sign in after user is confirmed
-          enabled: true,
-        },
-      })
-      console.log(user)
-    } catch (error) {
-      console.log('error signing up:', error)
-    }
+Amplify.configure(awsExports)
+
+interface Props extends WithAuthenticatorProps {
+  isPassedToWithAuthenticator: boolean
+}
+
+function Profile({ isPassedToWithAuthenticator, signOut, user }: Props) {
+  if (!isPassedToWithAuthenticator) {
+    throw new Error(`isPassedToWithAuthenticator was not provided`)
   }
-  return (
-    <div className="grid w-full grid-cols-8 gap-4">
-      <div className="col-span-6 col-start-2 mt-2 min-h-screen rounded-xl bg-gray-100 text-center dark:bg-slate-800">
-        <h1 className="text-l my-12 font-bold dark:text-white sm:text-xl md:text-3xl">
-          Profile
-        </h1>
 
-        <div>
-          <button
-            onClick={signUp}
-            className="my-2 mx-auto w-48 rounded-md bg-slate-200 p-4 text-black"
-          >
-            Sign Up
-          </button>
-        </div>
-      </div>
-    </div>
+  return (
+    <>
+      <h1>Hello {user?.username}</h1>
+      <button onClick={signOut}>Sign out</button>
+    </>
   )
 }
 
-export default Profile
+export default withAuthenticator(Profile)
+
+export async function getStaticProps() {
+  return {
+    props: {
+      isPassedToWithAuthenticator: true,
+    },
+  }
+}

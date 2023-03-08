@@ -18,8 +18,6 @@ type Profile @aws_iam @aws_api_key {
   id: ID!
   username: String
   userEmail: String
-  photoUrl: String
-  gameStats: String
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
   _version: Int!
@@ -284,8 +282,6 @@ input ModelProfileFilterInput {
   id: ModelIDInput
   username: ModelStringInput
   userEmail: ModelStringInput
-  photoUrl: ModelStringInput
-  gameStats: ModelStringInput
   and: [ModelProfileFilterInput]
   or: [ModelProfileFilterInput]
   not: ModelProfileFilterInput
@@ -294,8 +290,6 @@ input ModelProfileFilterInput {
 input ModelProfileConditionInput {
   username: ModelStringInput
   userEmail: ModelStringInput
-  photoUrl: ModelStringInput
-  gameStats: ModelStringInput
   and: [ModelProfileConditionInput]
   or: [ModelProfileConditionInput]
   not: ModelProfileConditionInput
@@ -305,8 +299,6 @@ input CreateProfileInput {
   id: ID
   username: String
   userEmail: String
-  photoUrl: String
-  gameStats: String
   _version: Int
 }
 
@@ -314,8 +306,6 @@ input UpdateProfileInput {
   id: ID!
   username: String
   userEmail: String
-  photoUrl: String
-  gameStats: String
   _version: Int
 }
 
@@ -328,8 +318,6 @@ input ModelSubscriptionProfileFilterInput {
   id: ModelSubscriptionIDInput
   username: ModelSubscriptionStringInput
   userEmail: ModelSubscriptionStringInput
-  photoUrl: ModelSubscriptionStringInput
-  gameStats: ModelSubscriptionStringInput
   and: [ModelSubscriptionProfileFilterInput]
   or: [ModelSubscriptionProfileFilterInput]
 }

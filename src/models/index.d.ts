@@ -52,8 +52,6 @@ type EagerProfile = {
   readonly id: string;
   readonly username?: string | null;
   readonly userEmail?: string | null;
-  readonly photoUrl?: string | null;
-  readonly gameStats?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -66,8 +64,6 @@ type LazyProfile = {
   readonly id: string;
   readonly username?: string | null;
   readonly userEmail?: string | null;
-  readonly photoUrl?: string | null;
-  readonly gameStats?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
