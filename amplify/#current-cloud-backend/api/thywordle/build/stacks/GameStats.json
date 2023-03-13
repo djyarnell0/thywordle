@@ -1741,62 +1741,6 @@
           ]
         }
       }
-    },
-    "transformerrootstackGameStatsQuerygetGameStatsauth0FunctionQuerygetGameStatsauth0FunctionAppSyncFunctionF5E9F3AFFunctionId": {
-      "Value": {
-        "Fn::GetAtt": [
-          "QuerygetGameStatsauth0FunctionQuerygetGameStatsauth0FunctionAppSyncFunction63F60C46",
-          "FunctionId"
-        ]
-      }
-    },
-    "transformerrootstackGameStatsQuerygetGameStatspostAuth0FunctionQuerygetGameStatspostAuth0FunctionAppSyncFunction4FDDFA9AFunctionId": {
-      "Value": {
-        "Fn::GetAtt": [
-          "QuerygetGameStatspostAuth0FunctionQuerygetGameStatspostAuth0FunctionAppSyncFunction02C3738E",
-          "FunctionId"
-        ]
-      }
-    },
-    "transformerrootstackGameStatsMutationcreateGameStatsinit0FunctionMutationcreateGameStatsinit0FunctionAppSyncFunctionB62667D5FunctionId": {
-      "Value": {
-        "Fn::GetAtt": [
-          "MutationcreateGameStatsinit0FunctionMutationcreateGameStatsinit0FunctionAppSyncFunctionE529D833",
-          "FunctionId"
-        ]
-      }
-    },
-    "transformerrootstackGameStatsMutationcreateGameStatsauth0FunctionMutationcreateGameStatsauth0FunctionAppSyncFunction799A034DFunctionId": {
-      "Value": {
-        "Fn::GetAtt": [
-          "MutationcreateGameStatsauth0FunctionMutationcreateGameStatsauth0FunctionAppSyncFunction2DA248A3",
-          "FunctionId"
-        ]
-      }
-    },
-    "transformerrootstackGameStatsMutationupdateGameStatsinit0FunctionMutationupdateGameStatsinit0FunctionAppSyncFunction6100713DFunctionId": {
-      "Value": {
-        "Fn::GetAtt": [
-          "MutationupdateGameStatsinit0FunctionMutationupdateGameStatsinit0FunctionAppSyncFunction5AEA8CBF",
-          "FunctionId"
-        ]
-      }
-    },
-    "transformerrootstackGameStatsSubscriptiononCreateGameStatsauth0FunctionSubscriptiononCreateGameStatsauth0FunctionAppSyncFunction87147751FunctionId": {
-      "Value": {
-        "Fn::GetAtt": [
-          "SubscriptiononCreateGameStatsauth0FunctionSubscriptiononCreateGameStatsauth0FunctionAppSyncFunctionFD0753F1",
-          "FunctionId"
-        ]
-      }
-    },
-    "transformerrootstackGameStatsSubscriptionOnCreateGameStatsDataResolverFnSubscriptionOnCreateGameStatsDataResolverFnAppSyncFunction88D3E681FunctionId": {
-      "Value": {
-        "Fn::GetAtt": [
-          "SubscriptionOnCreateGameStatsDataResolverFnSubscriptionOnCreateGameStatsDataResolverFnAppSyncFunctionEA7EF75D",
-          "FunctionId"
-        ]
-      }
     }
   }
 }

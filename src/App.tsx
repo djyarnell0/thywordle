@@ -186,7 +186,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route
               path="/profile"
-              element={<Profile isPassedToWithAuthenticator={false} />}
+              element={<Profile isPassedToWithAuthenticator={true} />}
             />
           </Routes>
 

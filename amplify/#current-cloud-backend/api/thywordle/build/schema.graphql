@@ -1,5 +1,5 @@
 
-type GameStats @aws_iam @aws_api_key {
+type GameStats @aws_iam @aws_cognito_user_pools @aws_api_key {
   id: ID!
   winDistribution: Int
   gamesFailed: Int
@@ -7,17 +7,7 @@ type GameStats @aws_iam @aws_api_key {
   bestStreak: Int
   totalGames: Int
   successRate: Int
-  createdAt: AWSDateTime!
-  updatedAt: AWSDateTime!
-  _version: Int!
-  _deleted: Boolean
-  _lastChangedAt: AWSTimestamp!
-}
-
-type Profile @aws_iam @aws_api_key {
-  id: ID!
-  username: String
-  userEmail: String
+  userID: ID
   createdAt: AWSDateTime!
   updatedAt: AWSDateTime!
   _version: Int!
@@ -175,7 +165,7 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelGameStatsConnection @aws_api_key @aws_iam {
+type ModelGameStatsConnection @aws_api_key @aws_iam @aws_cognito_user_pools {
   items: [GameStats]!
   nextToken: String
   startedAt: AWSTimestamp
@@ -189,18 +179,16 @@ input ModelGameStatsFilterInput {
   bestStreak: ModelIntInput
   totalGames: ModelIntInput
   successRate: ModelIntInput
+  userID: ModelIDInput
   and: [ModelGameStatsFilterInput]
   or: [ModelGameStatsFilterInput]
   not: ModelGameStatsFilterInput
 }
 
 type Query {
-  getGameStats(id: ID!): GameStats @aws_api_key @aws_iam
-  listGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String): ModelGameStatsConnection @aws_api_key @aws_iam
-  syncGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelGameStatsConnection @aws_api_key @aws_iam
-  getProfile(id: ID!): Profile @aws_api_key @aws_iam
-  listProfiles(filter: ModelProfileFilterInput, limit: Int, nextToken: String): ModelProfileConnection @aws_api_key @aws_iam
-  syncProfiles(filter: ModelProfileFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelProfileConnection @aws_api_key @aws_iam
+  getGameStats(id: ID!): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
+  listGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String): ModelGameStatsConnection @aws_api_key @aws_iam @aws_cognito_user_pools
+  syncGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelGameStatsConnection @aws_api_key @aws_iam @aws_cognito_user_pools
 }
 
 input ModelGameStatsConditionInput {
@@ -210,6 +198,7 @@ input ModelGameStatsConditionInput {
   bestStreak: ModelIntInput
   totalGames: ModelIntInput
   successRate: ModelIntInput
+  userID: ModelIDInput
   and: [ModelGameStatsConditionInput]
   or: [ModelGameStatsConditionInput]
   not: ModelGameStatsConditionInput
@@ -223,6 +212,7 @@ input CreateGameStatsInput {
   bestStreak: Int
   totalGames: Int
   successRate: Int
+  userID: ID
   _version: Int
 }
 
@@ -234,6 +224,7 @@ input UpdateGameStatsInput {
   bestStreak: Int
   totalGames: Int
   successRate: Int
+  userID: ID
   _version: Int
 }
 
@@ -243,12 +234,9 @@ input DeleteGameStatsInput {
 }
 
 type Mutation {
-  createGameStats(input: CreateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam
-  updateGameStats(input: UpdateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam
-  deleteGameStats(input: DeleteGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam
-  createProfile(input: CreateProfileInput!, condition: ModelProfileConditionInput): Profile @aws_api_key @aws_iam
-  updateProfile(input: UpdateProfileInput!, condition: ModelProfileConditionInput): Profile @aws_api_key @aws_iam
-  deleteProfile(input: DeleteProfileInput!, condition: ModelProfileConditionInput): Profile @aws_api_key @aws_iam
+  createGameStats(input: CreateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
+  updateGameStats(input: UpdateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
+  deleteGameStats(input: DeleteGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
 }
 
 input ModelSubscriptionGameStatsFilterInput {
@@ -259,66 +247,14 @@ input ModelSubscriptionGameStatsFilterInput {
   bestStreak: ModelSubscriptionIntInput
   totalGames: ModelSubscriptionIntInput
   successRate: ModelSubscriptionIntInput
+  userID: ModelSubscriptionIDInput
   and: [ModelSubscriptionGameStatsFilterInput]
   or: [ModelSubscriptionGameStatsFilterInput]
 }
 
 type Subscription {
-  onCreateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["createGameStats"]) @aws_api_key @aws_iam
-  onUpdateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["updateGameStats"]) @aws_api_key @aws_iam
-  onDeleteGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["deleteGameStats"]) @aws_api_key @aws_iam
-  onCreateProfile(filter: ModelSubscriptionProfileFilterInput): Profile @aws_subscribe(mutations: ["createProfile"]) @aws_api_key @aws_iam
-  onUpdateProfile(filter: ModelSubscriptionProfileFilterInput): Profile @aws_subscribe(mutations: ["updateProfile"]) @aws_api_key @aws_iam
-  onDeleteProfile(filter: ModelSubscriptionProfileFilterInput): Profile @aws_subscribe(mutations: ["deleteProfile"]) @aws_api_key @aws_iam
-}
-
-type ModelProfileConnection @aws_api_key @aws_iam {
-  items: [Profile]!
-  nextToken: String
-  startedAt: AWSTimestamp
-}
-
-input ModelProfileFilterInput {
-  id: ModelIDInput
-  username: ModelStringInput
-  userEmail: ModelStringInput
-  and: [ModelProfileFilterInput]
-  or: [ModelProfileFilterInput]
-  not: ModelProfileFilterInput
-}
-
-input ModelProfileConditionInput {
-  username: ModelStringInput
-  userEmail: ModelStringInput
-  and: [ModelProfileConditionInput]
-  or: [ModelProfileConditionInput]
-  not: ModelProfileConditionInput
-}
-
-input CreateProfileInput {
-  id: ID
-  username: String
-  userEmail: String
-  _version: Int
-}
-
-input UpdateProfileInput {
-  id: ID!
-  username: String
-  userEmail: String
-  _version: Int
-}
-
-input DeleteProfileInput {
-  id: ID!
-  _version: Int
-}
-
-input ModelSubscriptionProfileFilterInput {
-  id: ModelSubscriptionIDInput
-  username: ModelSubscriptionStringInput
-  userEmail: ModelSubscriptionStringInput
-  and: [ModelSubscriptionProfileFilterInput]
-  or: [ModelSubscriptionProfileFilterInput]
+  onCreateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["createGameStats"]) @aws_api_key @aws_iam @aws_cognito_user_pools
+  onUpdateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["updateGameStats"]) @aws_api_key @aws_iam @aws_cognito_user_pools
+  onDeleteGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["deleteGameStats"]) @aws_api_key @aws_iam @aws_cognito_user_pools
 }
 

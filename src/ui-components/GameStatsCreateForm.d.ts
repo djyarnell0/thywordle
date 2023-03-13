@@ -19,6 +19,7 @@ export declare type GameStatsCreateFormInputValues = {
     bestStreak?: number;
     totalGames?: number;
     successRate?: number;
+    userID?: string;
 };
 export declare type GameStatsCreateFormValidationValues = {
     winDistribution?: ValidationFunction<number>;
@@ -27,6 +28,7 @@ export declare type GameStatsCreateFormValidationValues = {
     bestStreak?: ValidationFunction<number>;
     totalGames?: ValidationFunction<number>;
     successRate?: ValidationFunction<number>;
+    userID?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type GameStatsCreateFormOverridesProps = {
@@ -37,6 +39,7 @@ export declare type GameStatsCreateFormOverridesProps = {
     bestStreak?: PrimitiveOverrideProps<TextFieldProps>;
     totalGames?: PrimitiveOverrideProps<TextFieldProps>;
     successRate?: PrimitiveOverrideProps<TextFieldProps>;
+    userID?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type GameStatsCreateFormProps = React.PropsWithChildren<{
     overrides?: GameStatsCreateFormOverridesProps | undefined | null;

@@ -52,6 +52,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "userID": {
+                    "name": "userID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -88,66 +95,9 @@ export const schema = {
                                     "delete",
                                     "read"
                                 ]
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        "Profile": {
-            "name": "Profile",
-            "fields": {
-                "id": {
-                    "name": "id",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "username": {
-                    "name": "username",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "userEmail": {
-                    "name": "userEmail",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "createdAt": {
-                    "name": "createdAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                },
-                "updatedAt": {
-                    "name": "updatedAt",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
-                }
-            },
-            "syncable": true,
-            "pluralName": "Profiles",
-            "attributes": [
-                {
-                    "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "auth",
-                    "properties": {
-                        "rules": [
+                            },
                             {
-                                "allow": "public",
+                                "allow": "private",
                                 "operations": [
                                     "create",
                                     "update",
@@ -164,5 +114,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.6",
-    "version": "cb37ece3166160e2e5004f56d431767d"
+    "version": "3f877bf002afafb1bc7f1865122f8673"
 };

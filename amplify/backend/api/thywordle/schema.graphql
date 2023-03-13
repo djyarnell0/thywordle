@@ -1,4 +1,4 @@
-type GameStats @model @auth(rules: [{allow: public}]) {
+type GameStats @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   winDistribution: Int
   gamesFailed: Int
@@ -6,11 +6,6 @@ type GameStats @model @auth(rules: [{allow: public}]) {
   bestStreak: Int
   totalGames: Int
   successRate: Int
-}
-
-type Profile @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  username: String
-  userEmail: String
+  userID: ID
 }
  

@@ -18,6 +18,7 @@ type EagerGameStats = {
   readonly bestStreak?: number | null;
   readonly totalGames?: number | null;
   readonly successRate?: number | null;
+  readonly userID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -34,6 +35,7 @@ type LazyGameStats = {
   readonly bestStreak?: number | null;
   readonly totalGames?: number | null;
   readonly successRate?: number | null;
+  readonly userID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -42,34 +44,4 @@ export declare type GameStats = LazyLoading extends LazyLoadingDisabled ? EagerG
 
 export declare const GameStats: (new (init: ModelInit<GameStats>) => GameStats) & {
   copyOf(source: GameStats, mutator: (draft: MutableModel<GameStats>) => MutableModel<GameStats> | void): GameStats;
-}
-
-type EagerProfile = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Profile, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly username?: string | null;
-  readonly userEmail?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyProfile = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Profile, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly username?: string | null;
-  readonly userEmail?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type Profile = LazyLoading extends LazyLoadingDisabled ? EagerProfile : LazyProfile
-
-export declare const Profile: (new (init: ModelInit<Profile>) => Profile) & {
-  copyOf(source: Profile, mutator: (draft: MutableModel<Profile>) => MutableModel<Profile> | void): Profile;
 }

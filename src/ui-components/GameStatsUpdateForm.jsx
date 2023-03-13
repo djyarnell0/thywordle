@@ -30,6 +30,7 @@ export default function GameStatsUpdateForm(props) {
     bestStreak: "",
     totalGames: "",
     successRate: "",
+    userID: "",
   };
   const [winDistribution, setWinDistribution] = React.useState(
     initialValues.winDistribution
@@ -45,6 +46,7 @@ export default function GameStatsUpdateForm(props) {
   const [successRate, setSuccessRate] = React.useState(
     initialValues.successRate
   );
+  const [userID, setUserID] = React.useState(initialValues.userID);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = gameStatsRecord
@@ -56,6 +58,7 @@ export default function GameStatsUpdateForm(props) {
     setBestStreak(cleanValues.bestStreak);
     setTotalGames(cleanValues.totalGames);
     setSuccessRate(cleanValues.successRate);
+    setUserID(cleanValues.userID);
     setErrors({});
   };
   const [gameStatsRecord, setGameStatsRecord] = React.useState(gameStats);
@@ -76,6 +79,7 @@ export default function GameStatsUpdateForm(props) {
     bestStreak: [],
     totalGames: [],
     successRate: [],
+    userID: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -109,6 +113,7 @@ export default function GameStatsUpdateForm(props) {
           bestStreak,
           totalGames,
           successRate,
+          userID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -174,6 +179,7 @@ export default function GameStatsUpdateForm(props) {
               bestStreak,
               totalGames,
               successRate,
+              userID,
             };
             const result = onChange(modelFields);
             value = result?.winDistribution ?? value;
@@ -207,6 +213,7 @@ export default function GameStatsUpdateForm(props) {
               bestStreak,
               totalGames,
               successRate,
+              userID,
             };
             const result = onChange(modelFields);
             value = result?.gamesFailed ?? value;
@@ -240,6 +247,7 @@ export default function GameStatsUpdateForm(props) {
               bestStreak,
               totalGames,
               successRate,
+              userID,
             };
             const result = onChange(modelFields);
             value = result?.currentStreak ?? value;
@@ -273,6 +281,7 @@ export default function GameStatsUpdateForm(props) {
               bestStreak: value,
               totalGames,
               successRate,
+              userID,
             };
             const result = onChange(modelFields);
             value = result?.bestStreak ?? value;
@@ -306,6 +315,7 @@ export default function GameStatsUpdateForm(props) {
               bestStreak,
               totalGames: value,
               successRate,
+              userID,
             };
             const result = onChange(modelFields);
             value = result?.totalGames ?? value;
@@ -339,6 +349,7 @@ export default function GameStatsUpdateForm(props) {
               bestStreak,
               totalGames,
               successRate: value,
+              userID,
             };
             const result = onChange(modelFields);
             value = result?.successRate ?? value;
@@ -352,6 +363,36 @@ export default function GameStatsUpdateForm(props) {
         errorMessage={errors.successRate?.errorMessage}
         hasError={errors.successRate?.hasError}
         {...getOverrideProps(overrides, "successRate")}
+      ></TextField>
+      <TextField
+        label="User id"
+        isRequired={false}
+        isReadOnly={false}
+        value={userID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              winDistribution,
+              gamesFailed,
+              currentStreak,
+              bestStreak,
+              totalGames,
+              successRate,
+              userID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.userID ?? value;
+          }
+          if (errors.userID?.hasError) {
+            runValidationTasks("userID", value);
+          }
+          setUserID(value);
+        }}
+        onBlur={() => runValidationTasks("userID", userID)}
+        errorMessage={errors.userID?.errorMessage}
+        hasError={errors.userID?.hasError}
+        {...getOverrideProps(overrides, "userID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

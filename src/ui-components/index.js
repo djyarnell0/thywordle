@@ -7,5 +7,3 @@
 export { default as studioTheme } from "./studioTheme";
 export { default as GameStatsCreateForm } from "./GameStatsCreateForm";
 export { default as GameStatsUpdateForm } from "./GameStatsUpdateForm";
-export { default as ProfileCreateForm } from "./ProfileCreateForm";
-export { default as ProfileUpdateForm } from "./ProfileUpdateForm";
