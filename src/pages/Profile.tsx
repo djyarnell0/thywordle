@@ -20,6 +20,7 @@ interface Props extends WithAuthenticatorProps {
 }
 async function saveStats(user: AmplifyUser | undefined, stats: GameStats) {
   console.log(user)
+  const statistics = loadStats()
   await DataStore.save(
     new GameStatistics({
       winDistribution: stats.winDistribution,
