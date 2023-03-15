@@ -5,6 +5,7 @@ import Div100vh from 'react-div-100vh'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 import { AlertContainer } from './components/alerts/AlertContainer'
+import { Menu } from './components/menu/Menu'
 import { DatePickerModal } from './components/modals/DatePickerModal'
 import { HintModal } from './components/modals/HintModal'
 import { InfoModal } from './components/modals/InfoModal'
@@ -53,6 +54,7 @@ function App() {
 
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
     useAlert()
+  const [showMenu, setShowMenu] = useState<boolean>(false)
   const [isGameWon, setIsGameWon] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
@@ -153,7 +155,10 @@ function App() {
     <Router>
       <Div100vh>
         <div className="flex h-full w-full flex-col">
+          <Menu showMenu={showMenu} setShowMenu={setShowMenu} />
           <Navbar
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
             setIsInfoModalOpen={setIsInfoModalOpen}
             setIsStatsModalOpen={setIsStatsModalOpen}
             setIsDatePickerModalOpen={setIsDatePickerModalOpen}
