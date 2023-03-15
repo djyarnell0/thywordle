@@ -18,16 +18,16 @@ Amplify.configure(awsExports)
 interface Props extends WithAuthenticatorProps {
   isPassedToWithAuthenticator: boolean
 }
-async function saveStats(user: AmplifyUser | undefined) {
+async function saveStats(user: AmplifyUser | undefined, stats: GameStats) {
   console.log(user)
   await DataStore.save(
     new GameStatistics({
-      winDistribution: 1,
-      gamesFailed: 4,
-      currentStreak: 8,
-      bestStreak: 10,
-      totalGames: 30,
-      successRate: 30,
+      winDistribution: stats.winDistribution,
+      gamesFailed: stats.gamesFailed,
+      currentStreak: stats.currentStreak,
+      bestStreak: stats.bestStreak,
+      totalGames: stats.totalGames,
+      successRate: stats.successRate,
       userID: user?.attributes.sub,
     })
   )
