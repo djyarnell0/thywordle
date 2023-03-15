@@ -7,6 +7,7 @@ import {
   withAuthenticator,
 } from '@aws-amplify/ui-react'
 import { Amplify } from 'aws-amplify'
+import { Stats } from 'fs'
 
 import awsExports from '../aws-exports'
 import { GameStatistics } from '../models'
@@ -38,7 +39,9 @@ function Profile({ signOut, user }: Props) {
   return (
     <>
       <h1>Hello {user?.attributes?.preferred_username}</h1>
-      <button onClick={() => saveStats(user)}>Save your game stats!</button>
+      <button onClick={() => saveStats(user, loadStats())}>
+        Save your game stats!
+      </button>
       <button onClick={signOut}>Sign out</button>
     </>
   )
