@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "GameStats": {
-            "name": "GameStats",
+        "GameStatistics": {
+            "name": "GameStatistics",
             "fields": {
                 "id": {
                     "name": "id",
@@ -77,7 +77,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "GameStats",
+            "pluralName": "GameStatistics",
             "attributes": [
                 {
                     "type": "model",
@@ -114,5 +114,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.6",
-    "version": "3f877bf002afafb1bc7f1865122f8673"
+    "version": "481ff3975fc323eb1e8530929d8838f2"
 };

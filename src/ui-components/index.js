@@ -5,5 +5,5 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
-export { default as GameStatsCreateForm } from "./GameStatsCreateForm";
-export { default as GameStatsUpdateForm } from "./GameStatsUpdateForm";
+export { default as GameStatisticsCreateForm } from "./GameStatisticsCreateForm";
+export { default as GameStatisticsUpdateForm } from "./GameStatisticsUpdateForm";

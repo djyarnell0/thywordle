@@ -6,9 +6,9 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
-type EagerGameStats = {
+type EagerGameStatistics = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<GameStats, 'id'>;
+    identifier: ManagedIdentifier<GameStatistics, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
@@ -23,9 +23,9 @@ type EagerGameStats = {
   readonly updatedAt?: string | null;
 }
 
-type LazyGameStats = {
+type LazyGameStatistics = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<GameStats, 'id'>;
+    identifier: ManagedIdentifier<GameStatistics, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
@@ -40,8 +40,8 @@ type LazyGameStats = {
   readonly updatedAt?: string | null;
 }
 
-export declare type GameStats = LazyLoading extends LazyLoadingDisabled ? EagerGameStats : LazyGameStats
+export declare type GameStatistics = LazyLoading extends LazyLoadingDisabled ? EagerGameStatistics : LazyGameStatistics
 
-export declare const GameStats: (new (init: ModelInit<GameStats>) => GameStats) & {
-  copyOf(source: GameStats, mutator: (draft: MutableModel<GameStats>) => MutableModel<GameStats> | void): GameStats;
+export declare const GameStatistics: (new (init: ModelInit<GameStatistics>) => GameStatistics) & {
+  copyOf(source: GameStatistics, mutator: (draft: MutableModel<GameStatistics>) => MutableModel<GameStatistics> | void): GameStatistics;
 }

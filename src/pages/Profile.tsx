@@ -9,7 +9,9 @@ import {
 import { Amplify } from 'aws-amplify'
 
 import awsExports from '../aws-exports'
-import { GameStats } from '../models'
+import { GameStatistics } from '../models'
+import { GameStats } from './../lib/localStorage'
+import { loadStats } from './../lib/stats'
 
 Amplify.configure(awsExports)
 
@@ -19,7 +21,7 @@ interface Props extends WithAuthenticatorProps {
 async function saveStats(user: AmplifyUser | undefined) {
   console.log(user)
   await DataStore.save(
-    new GameStats({
+    new GameStatistics({
       winDistribution: 1,
       gamesFailed: 4,
       currentStreak: 8,

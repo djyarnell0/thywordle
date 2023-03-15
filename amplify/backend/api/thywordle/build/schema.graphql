@@ -1,5 +1,5 @@
 
-type GameStats @aws_iam @aws_cognito_user_pools @aws_api_key {
+type GameStatistics @aws_iam @aws_cognito_user_pools @aws_api_key {
   id: ID!
   winDistribution: Int
   gamesFailed: Int
@@ -165,13 +165,13 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelGameStatsConnection @aws_api_key @aws_iam @aws_cognito_user_pools {
-  items: [GameStats]!
+type ModelGameStatisticsConnection @aws_api_key @aws_iam @aws_cognito_user_pools {
+  items: [GameStatistics]!
   nextToken: String
   startedAt: AWSTimestamp
 }
 
-input ModelGameStatsFilterInput {
+input ModelGameStatisticsFilterInput {
   id: ModelIDInput
   winDistribution: ModelIntInput
   gamesFailed: ModelIntInput
@@ -180,18 +180,18 @@ input ModelGameStatsFilterInput {
   totalGames: ModelIntInput
   successRate: ModelIntInput
   userID: ModelIDInput
-  and: [ModelGameStatsFilterInput]
-  or: [ModelGameStatsFilterInput]
-  not: ModelGameStatsFilterInput
+  and: [ModelGameStatisticsFilterInput]
+  or: [ModelGameStatisticsFilterInput]
+  not: ModelGameStatisticsFilterInput
 }
 
 type Query {
-  getGameStats(id: ID!): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
-  listGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String): ModelGameStatsConnection @aws_api_key @aws_iam @aws_cognito_user_pools
-  syncGameStats(filter: ModelGameStatsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelGameStatsConnection @aws_api_key @aws_iam @aws_cognito_user_pools
+  getGameStatistics(id: ID!): GameStatistics @aws_api_key @aws_iam @aws_cognito_user_pools
+  listGameStatistics(filter: ModelGameStatisticsFilterInput, limit: Int, nextToken: String): ModelGameStatisticsConnection @aws_api_key @aws_iam @aws_cognito_user_pools
+  syncGameStatistics(filter: ModelGameStatisticsFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelGameStatisticsConnection @aws_api_key @aws_iam @aws_cognito_user_pools
 }
 
-input ModelGameStatsConditionInput {
+input ModelGameStatisticsConditionInput {
   winDistribution: ModelIntInput
   gamesFailed: ModelIntInput
   currentStreak: ModelIntInput
@@ -199,12 +199,12 @@ input ModelGameStatsConditionInput {
   totalGames: ModelIntInput
   successRate: ModelIntInput
   userID: ModelIDInput
-  and: [ModelGameStatsConditionInput]
-  or: [ModelGameStatsConditionInput]
-  not: ModelGameStatsConditionInput
+  and: [ModelGameStatisticsConditionInput]
+  or: [ModelGameStatisticsConditionInput]
+  not: ModelGameStatisticsConditionInput
 }
 
-input CreateGameStatsInput {
+input CreateGameStatisticsInput {
   id: ID
   winDistribution: Int
   gamesFailed: Int
@@ -216,7 +216,7 @@ input CreateGameStatsInput {
   _version: Int
 }
 
-input UpdateGameStatsInput {
+input UpdateGameStatisticsInput {
   id: ID!
   winDistribution: Int
   gamesFailed: Int
@@ -228,18 +228,18 @@ input UpdateGameStatsInput {
   _version: Int
 }
 
-input DeleteGameStatsInput {
+input DeleteGameStatisticsInput {
   id: ID!
   _version: Int
 }
 
 type Mutation {
-  createGameStats(input: CreateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
-  updateGameStats(input: UpdateGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
-  deleteGameStats(input: DeleteGameStatsInput!, condition: ModelGameStatsConditionInput): GameStats @aws_api_key @aws_iam @aws_cognito_user_pools
+  createGameStatistics(input: CreateGameStatisticsInput!, condition: ModelGameStatisticsConditionInput): GameStatistics @aws_api_key @aws_iam @aws_cognito_user_pools
+  updateGameStatistics(input: UpdateGameStatisticsInput!, condition: ModelGameStatisticsConditionInput): GameStatistics @aws_api_key @aws_iam @aws_cognito_user_pools
+  deleteGameStatistics(input: DeleteGameStatisticsInput!, condition: ModelGameStatisticsConditionInput): GameStatistics @aws_api_key @aws_iam @aws_cognito_user_pools
 }
 
-input ModelSubscriptionGameStatsFilterInput {
+input ModelSubscriptionGameStatisticsFilterInput {
   id: ModelSubscriptionIDInput
   winDistribution: ModelSubscriptionIntInput
   gamesFailed: ModelSubscriptionIntInput
@@ -248,13 +248,13 @@ input ModelSubscriptionGameStatsFilterInput {
   totalGames: ModelSubscriptionIntInput
   successRate: ModelSubscriptionIntInput
   userID: ModelSubscriptionIDInput
-  and: [ModelSubscriptionGameStatsFilterInput]
-  or: [ModelSubscriptionGameStatsFilterInput]
+  and: [ModelSubscriptionGameStatisticsFilterInput]
+  or: [ModelSubscriptionGameStatisticsFilterInput]
 }
 
 type Subscription {
-  onCreateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["createGameStats"]) @aws_api_key @aws_iam @aws_cognito_user_pools
-  onUpdateGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["updateGameStats"]) @aws_api_key @aws_iam @aws_cognito_user_pools
-  onDeleteGameStats(filter: ModelSubscriptionGameStatsFilterInput): GameStats @aws_subscribe(mutations: ["deleteGameStats"]) @aws_api_key @aws_iam @aws_cognito_user_pools
+  onCreateGameStatistics(filter: ModelSubscriptionGameStatisticsFilterInput): GameStatistics @aws_subscribe(mutations: ["createGameStatistics"]) @aws_api_key @aws_iam @aws_cognito_user_pools
+  onUpdateGameStatistics(filter: ModelSubscriptionGameStatisticsFilterInput): GameStatistics @aws_subscribe(mutations: ["updateGameStatistics"]) @aws_api_key @aws_iam @aws_cognito_user_pools
+  onDeleteGameStatistics(filter: ModelSubscriptionGameStatisticsFilterInput): GameStatistics @aws_subscribe(mutations: ["deleteGameStatistics"]) @aws_api_key @aws_iam @aws_cognito_user_pools
 }
 

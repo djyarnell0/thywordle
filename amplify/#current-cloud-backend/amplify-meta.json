@@ -16,11 +16,11 @@
     "thywordle": {
       "dependsOn": [
         {
-          "category": "auth",
-          "resourceName": "thywordle",
           "attributes": [
             "UserPoolId"
-          ]
+          ],
+          "category": "auth",
+          "resourceName": "thywordle"
         }
       ],
       "output": {
@@ -50,12 +50,12 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-03-13T17:10:25.626Z",
+      "lastPushTimeStamp": "2023-03-15T17:43:09.883Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya85b461c9d844-staging-191351-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apithywordle"
       },
-      "lastPushDirHash": "6+BLT4/j2ROCyAe6KRYmfBEgkq8="
+      "lastPushDirHash": "lhzmpl+11ejWT5NFTagXWEH21/s="
     }
   },
   "auth": {
@@ -99,7 +99,7 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "thywordle"
       },
-      "lastPushTimeStamp": "2023-03-13T17:10:25.578Z",
+      "lastPushTimeStamp": "2023-03-15T17:43:09.822Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifya85b461c9d844-staging-191351-deployment/amplify-cfn-templates/auth/thywordle-cloudformation-template.json",
         "logicalId": "auththywordle"

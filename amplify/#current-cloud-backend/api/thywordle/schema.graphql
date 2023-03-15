@@ -1,4 +1,4 @@
-type GameStats @model @auth(rules: [{allow: public}, {allow: private}]) {
+type GameStatistics @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   winDistribution: Int
   gamesFailed: Int
