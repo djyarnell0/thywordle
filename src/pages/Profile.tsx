@@ -19,11 +19,17 @@ Amplify.configure(awsExports)
 interface Props extends WithAuthenticatorProps {
   isPassedToWithAuthenticator: boolean
 }
-var averageGuessPerGame(stats: GameStats) => {
-  
-  averageGuessPerGame = 1*stats.winDistribution[0] + 1*stats.winDistribution[1] + 1*stats.winDistribution[2] + 1*stats.winDistribution[3] + 1*stats.winDistribution[4] + 1*stats.winDistribution[5]   
+var averageGuessPerGame: number
+;(stats: GameStats) => {
+  averageGuessPerGame =
+    1 * stats.winDistribution[0] +
+    1 * stats.winDistribution[1] +
+    1 * stats.winDistribution[2] +
+    1 * stats.winDistribution[3] +
+    1 * stats.winDistribution[4] +
+    1 * stats.winDistribution[5]
 }
-async function saveStats(user: AmplifyUser | undefined, stats: GameStats, averageGuessPerGame: number) {
+async function saveStats(user: AmplifyUser | undefined, stats: GameStats) {
   console.log(user)
   const statistics = loadStats()
   await DataStore.save(
